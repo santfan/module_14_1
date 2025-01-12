@@ -19,16 +19,16 @@ balance INTEGER NOT NULL
 cursor.execute("CREATE INDEX IF NOT EXISTS idx_email ON Users (email)")
 
 # Заполним базу согласно задания
-# for i in range(1, 11):
-#     cursor.execute("INSERT INTO Users (username, email, age, balance) VALUES (?, ?, ?, ?) ",
-#                    (f'user{i}', f'examle{i}@gmail.com', i * 10, 1000))
+for i in range(1, 11):
+    cursor.execute("INSERT INTO Users (username, email, age, balance) VALUES (?, ?, ?, ?) ",
+                   (f'user{i}', f'examle{i}@gmail.com', i * 10, 1000))
 
 # установим баланс каждой второй записи в 500
-# cursor.execute("UPDATE Users SET balance = 500 WHERE id%2 != 0")
+cursor.execute("UPDATE Users SET balance = 500 WHERE id%2 != 0")
 
 # Удалим каждую третью запись начиная с первой
-# for i in range(1, 11, 3):
-#     cursor.execute("DELETE FROM Users WHERE id = ?", (i,))
+for i in range(1, 11, 3):
+    cursor.execute("DELETE FROM Users WHERE id = ?", (i,))
 
 # Сделаем выборку всех записей (id не включать) возраст 60 исключим
 cursor.execute("SELECT * FROM Users WHERE age != 60")
